@@ -1,0 +1,36 @@
+# 開発用設定
+version: '3'
+services:
+  app:
+    image: node:17.9.0-alpine
+    container_name: recipe_app
+    volumes:
+      - ./client:/client
+    working_dir: /client
+    ports:
+      - 3001:3000
+    tty: true
+
+  api:
+    image: python:3.7
+    container_name: recipe_api
+    volumes:
+      - ./server:/server
+    working_dir: /server
+    ports:
+      - 8001:8000
+    tty: true
+
+  db:
+    image: mysql:8.0
+    container_name: recipe_db
+    volumes:
+      - ./db:/db
+    environment:
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASS}
+      - MYSQL_ROOT_PASSWORD=${DB_PASS}
+      - TZ=Asia/Tokyo
+    ports:
+      - ${DB_PORT}:3306
