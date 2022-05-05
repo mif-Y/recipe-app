@@ -1,0 +1,27 @@
+{
+  "name": "recepe_client",
+  "dockerComposeFile": [
+    "../../docker-compose.yaml",
+  ],
+
+  "service": "web",
+
+  "workspaceFolder": "/web",
+
+  // Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"dbaeumer.vscode-eslint",
+		"esbenp.prettier-vscode",
+	],
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"editor.formatOnType": true, // 入力した行を自動でフォーマット
+		"emmet.showSuggestionsAsSnippets": true,
+		"emmet.triggerExpansionOnTab": true,
+		"eslint.validate": ["javascript"],
+		"javascript.updateImportsOnFileMove.enabled": "always",
+		"files.autoSave": "onFocusChange",
+	},
+
+}

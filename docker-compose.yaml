@@ -1,12 +1,12 @@
 # 開発用設定
 version: '3'
 services:
-  app:
+  web:
     image: node:17.9.0-alpine
     container_name: recipe_app
     volumes:
-      - ./client:/client
-    working_dir: /client
+      - recipe_web:/web
+    working_dir: /web
     ports:
       - 3001:3000
     tty: true
@@ -15,7 +15,7 @@ services:
     image: python:3.7
     container_name: recipe_api
     volumes:
-      - ./server:/server
+      - recipe_server:/server
     working_dir: /server
     ports:
       - 8001:8000
@@ -25,7 +25,7 @@ services:
     image: mysql:8.0
     container_name: recipe_db
     volumes:
-      - ./db:/db
+      - recipe_db:/db
     environment:
       - MYSQL_DATABASE=${DB_NAME}
       - MYSQL_USER=${DB_USER}
@@ -34,3 +34,8 @@ services:
       - TZ=Asia/Tokyo
     ports:
       - ${DB_PORT}:3306
+
+volumes:
+  recipe_web:
+  recipe_server:
+  recipe_db:

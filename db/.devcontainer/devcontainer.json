@@ -1,0 +1,28 @@
+{
+  "name": "recepe_db",
+  "dockerComposeFile": [
+    "../../docker-compose.yaml",
+  ],
+
+  "service": "db",
+
+  "workspaceFolder": "/db",
+
+  // Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-python.python",
+		"dbaeumer.vscode-eslint",
+		"esbenp.prettier-vscode",
+	],
+
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"editor.formatOnType": true, // 入力した行を自動でフォーマット
+		"emmet.showSuggestionsAsSnippets": true,
+		"emmet.triggerExpansionOnTab": true,
+		"python.formatting.provider": "black",
+		"files.autoSave": "onFocusChange",
+		"python.analysis.extraPaths": ["/usr/local/lib/python3.10/site-packages"]
+	},
+}
